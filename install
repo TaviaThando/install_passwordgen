@@ -1,15 +1,16 @@
 #!/bin/bash
 
 cd
-if [ -d ".password_generator" ]; then
-	rm -rf .password_generator
+if [ -d ".password_gen" ]; then
+	rm -rf .password_gen
 fi
 
 read -p "enter sudo password: " SUDOPASS
 cd
-git clone git@github.com:Yello-Garden/.password_generator.git
-cp .password_generator/generator.py yg_gen && chmod 777 yg_gen
-echo "$SUDOPASS" | sudo -S mv yg_gen /bin
-rm -rf install_passwordgenerator
+git clone git@github.com:TaviaThando/.password_gen.git > clone.txt 2>&1
+cp .password_gen/generator.py iamroot && chmod 777 iamroot
+echo "$SUDOPASS" | sudo -S mv iamroot /bin
+rm clone.txt
+rm -rf install_passwordgen
 
 echo "Process complete..."
