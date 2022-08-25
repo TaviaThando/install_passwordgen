@@ -1,0 +1,15 @@
+#!/bin/bash
+
+cd
+if [ -d ".password_generator" ]; then
+	rm -rf .password_generator
+fi
+
+read -p "enter sudo password: " SUDOPASS
+cd
+git clone git@github.com:Yello-Garden/.password_generator.git
+cp .password_generator/generator.py yg_gen && chmod 777 yg_gen
+echo "$SUDOPASS" | sudo -S mv yg_gen /bin
+rm -rf install_passwordgenerator
+
+echo "Process complete..."
